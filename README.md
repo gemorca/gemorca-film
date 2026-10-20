@@ -145,7 +145,7 @@ Seluruh proyek ini, mulai dari desain, kode, hingga konten, dibuat sepenuhnya ol
 
 ## 📄 Lisensi
 
-Hak Cipta © 2025 **Moh. Agil S. Abdul**. Seluruh hak dilindungi (*All Rights Reserved*).
+Hak Cipta © 2026 **Moh. Agil S. Abdul**. Seluruh hak dilindungi (*All Rights Reserved*).
 
 Kode sumber, desain, dan logo dalam repositori ini dibuat dan dimiliki sepenuhnya oleh pemilik hak cipta. Dilarang menyalin, memodifikasi, mendistribusikan, atau menggunakan ulang sebagian maupun seluruh isi proyek ini untuk tujuan apa pun tanpa izin tertulis dari pemilik.
 
