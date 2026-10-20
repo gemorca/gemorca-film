@@ -153,6 +153,6 @@ Kode sumber, desain, dan logo dalam repositori ini dibuat dan dimiliki sepenuhny
 
 <div align="center">
 
-**Gemorca Film** · Dibuat sendiri oleh Moh. Agil S. Abdul di Gorontalo.
+**Gemorca Film** · Dibuat sendiri oleh Moh. Agil S. Abdul.
 
 </div>
