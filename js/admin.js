@@ -55,7 +55,6 @@
     var tahunInput = byId("adminTahun");
     var posterInput = byId("adminPoster");
     var deskripsiInput = byId("adminDeskripsi");
-    var unggulanInput = byId("adminUnggulan");
     var statusInput = byId("adminStatus");
     var rilisInput = byId("adminRilis");
     var posterPreview = byId("adminPosterPreview");
@@ -107,9 +106,6 @@
         return String(item.status || "").trim().toLowerCase() === "segera";
     }
 
-    function isFeatured(item) {
-        return TRUE_VALUES.indexOf(String(item.unggulan || "").trim().toLowerCase()) !== -1;
-    }
 
     function sameItem(a, b) {
         return String(a.judul || "") === String(b.judul || "") && String(a.video || "") === String(b.video || "");
@@ -529,14 +525,6 @@
         var titleBox = el("div", "admin-list__titlebox");
         titleBox.appendChild(el("span", "admin-list__title", name));
 
-        var featBtn = el("button", "admin-quick-btn" + (isFeatured(item) ? " is-active" : ""), "★ Unggulan");
-        featBtn.type = "button";
-        featBtn.setAttribute("aria-label", "Toggle unggulan untuk " + name);
-        featBtn.addEventListener("click", function () {
-            quickToggle(item, "unggulan", isFeatured(item) ? "" : "ya", featBtn);
-        });
-        titleBox.appendChild(featBtn);
-
         var statusBtn = el("button", "admin-quick-btn" + (isSoon(item) ? " is-active" : ""), isSoon(item) ? "⚡ Segera" : "Tayang");
         statusBtn.type = "button";
         statusBtn.setAttribute("aria-label", "Toggle status tayang/segera untuk " + name);
@@ -613,8 +601,7 @@
         var items = currentItems.filter(function (item) {
             var matchQuery = !query || (String(item.judul || "") + " " + String(item.genre || "")).toLowerCase().indexOf(query) !== -1;
             var matchStatus = true;
-            if (currentFilter === "featured") matchStatus = isFeatured(item);
-            else if (currentFilter === "soon") matchStatus = isSoon(item);
+            if (currentFilter === "soon") matchStatus = isSoon(item);
             return matchQuery && matchStatus;
         });
 
@@ -857,7 +844,6 @@
             tahun: tahunInput.value.trim(),
             poster: posterInput.value.trim(),
             deskripsi: deskripsiInput.value.trim(),
-            unggulan: unggulanInput.checked ? "ya" : "",
             status: statusInput.value === "segera" ? "segera" : "",
             rilis: rilisInput.value.trim()
         };
@@ -1014,7 +1000,6 @@
             tahunInput.value = item.tahun || "";
             posterInput.value = item.poster || "";
             deskripsiInput.value = item.deskripsi || "";
-            unggulanInput.checked = isFeatured(item);
             statusInput.value = isSoon(item) ? "segera" : "";
             rilisInput.value = formatForPicker(item.rilis);
             editingOriginal = item;

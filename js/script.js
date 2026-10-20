@@ -307,7 +307,6 @@ let FILMS = [];
       tahun: col(["tahun", "year"]),
       poster: col(["poster", "posterurl"]),
       deskripsi: col(["deskripsi", "sinopsis"]),
-      unggulan: col(["unggulan", "featured"]),
       status: col(["status"]),
       rilis: col(["rilis", "release"])
     };
@@ -340,8 +339,7 @@ let FILMS = [];
           segera: segera,
           rilis: rilisRaw,
           rilisMs: rilisMs,
-          deskripsi: val(row, "deskripsi"),
-          unggulan: ["ya", "yes", "true", "1", "x"].includes(val(row, "unggulan").toLowerCase())
+          deskripsi: val(row, "deskripsi")
         };
         if (!poster && ytId) film.bannerUrl = "https://img.youtube.com/vi/" + ytId + "/maxresdefault.jpg";
         return film;
@@ -476,6 +474,15 @@ let FILMS = [];
   hero.addEventListener("focusin", stopHeroSlideshow);
   hero.addEventListener("focusout", startHeroSlideshow);
 
+  function shuffle(arr) {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
   function renderHero() {
     const candidates = FILMS.filter((f) => !f.segera && (f.posterUrl || f.bannerUrl));
     hero.hidden = false;
@@ -488,10 +495,7 @@ let FILMS = [];
       return;
     }
 
-    const featured = candidates.filter((f) => f.unggulan);
-    const pool = featured.length ? featured : candidates;
-    const rest = candidates.filter((f) => pool.indexOf(f) === -1);
-    heroSlides = pool.concat(rest).slice(0, HERO_MAX_SLIDES);
+    heroSlides = shuffle(candidates).slice(0, HERO_MAX_SLIDES);
 
     buildHeroDots();
     showHeroSlide(0, true);
