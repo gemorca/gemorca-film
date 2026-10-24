@@ -89,8 +89,8 @@ Proyek ini dirancang untuk **Vercel**.
 1. *Clone* repositori ini.
 
    ```bash
-   git clone https://github.com/gemorca/<nama-repo>.git
-   cd <nama-repo>
+   git clone https://github.com/gemorca/gemorca-film.git
+   cd gemorca-film
    ```
 
 2. Import repositori ke [Vercel](https://vercel.com/).
